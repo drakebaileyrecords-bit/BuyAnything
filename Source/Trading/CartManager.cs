@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BuyAnything.Source.Data;
+using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
-using BuyAnything.Source.Data;
+using UnityEngine;
 using Verse;
 
 namespace BuyAnything.Source.Trading
@@ -30,16 +32,30 @@ namespace BuyAnything.Source.Trading
     float unitPrice,
     List<Thing> sourceThings)
         {
+            int ownedQuantity = sourceThings.Sum(t => t.stackCount);
+
             CartItem existing = items.FirstOrDefault(i =>
                 i.IsSellItem &&
                 i.Def == def);
 
             if (existing != null)
             {
-                existing.Quantity += quantity;
+                int newQuantity = existing.Quantity + quantity;
+
+                existing.Quantity = Mathf.Min(newQuantity, ownedQuantity);
+
+                if (newQuantity > ownedQuantity)
+                {
+                    Messages.Message(
+                        "You cannot sell more than you own.",
+                        MessageTypeDefOf.RejectInput,
+                        false);
+                }
             }
             else
             {
+                quantity = Mathf.Min(quantity, ownedQuantity);
+
                 items.Add(new CartItem(
                     def,
                     quantity,

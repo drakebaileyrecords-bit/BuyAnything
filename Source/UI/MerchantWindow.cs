@@ -83,17 +83,20 @@ namespace BuyAnything.Source.UI
         }
         private void DrawInspectorRow(float x, float y, float width, string label, string value)
         {
-            Widgets.Label(
-                new Rect(x, y, width * 0.55f, 22f),
-                label);
+            if (!string.IsNullOrEmpty(label))
+            {
+                Widgets.Label(
+                    new Rect(x, y, width * 0.55f, 22f),
+                    label);
 
-            Text.Anchor = TextAnchor.UpperRight;
+                Text.Anchor = TextAnchor.UpperRight;
 
-            Widgets.Label(
-                new Rect(x + width * 0.55f, y, width * 0.45f, 22f),
-                value);
+                Widgets.Label(
+                    new Rect(x + width * 0.55f, y, width * 0.45f, 22f),
+                    value);
 
-            Text.Anchor = TextAnchor.UpperLeft;
+                Text.Anchor = TextAnchor.UpperLeft;
+            }
         }
 
         public override void DoWindowContents(Rect inRect)
@@ -438,21 +441,10 @@ namespace BuyAnything.Source.UI
 
                 y += LineHeight;
 
-                if (currentMode == MerchantMode.Buy)
-                {
-                    DrawInspectorRow(
-                        left,
-                        y,
-                        285f,
-                        "Stack Limit",
-                        selectedItem.StackLimit.ToString());
+                int inCart = 0;
 
-                    y += LineHeight;
-                }
-                else
+                if (currentMode == MerchantMode.Sell)
                 {
-                    int inCart = 0;
-
                     CartItem cartItem =
                         CartManager.Items.FirstOrDefault(i =>
                             i.IsSellItem &&
@@ -460,36 +452,41 @@ namespace BuyAnything.Source.UI
 
                     if (cartItem != null)
                         inCart = cartItem.Quantity;
-
-                    DrawInspectorRow(
-     left,
-     y,
-     285f,
-     "Owned",
-     selectedItem.Quantity.ToString());
-
-                    y += LineHeight;
-
-                    DrawInspectorRow(
-                        left,
-                        y,
-                        285f,
-                        "In Cart",
-                        inCart.ToString());
-
-                    y += LineHeight;
-
-                    DrawInspectorRow(
-                        left,
-                        y,
-                        285f,
-                        "Remaining",
-                        (selectedItem.Quantity - inCart).ToString());
-
-                    y += LineHeight;
                 }
 
-                y += SectionGap;
+                DrawInspectorRow(
+                    left,
+                    y,
+                    285f,
+                    currentMode == MerchantMode.Buy ? "Stack Limit" : "Owned",
+                    currentMode == MerchantMode.Buy
+                        ? selectedItem.StackLimit.ToString()
+                        : selectedItem.Quantity.ToString());
+
+                y += LineHeight;
+
+                DrawInspectorRow(
+                    left,
+                    y,
+                    285f,
+                    currentMode == MerchantMode.Buy ? "" : "In Cart",
+                    currentMode == MerchantMode.Buy ? "" : inCart.ToString());
+
+                y += LineHeight;
+
+                DrawInspectorRow(
+                    left,
+                    y,
+                    285f,
+                    currentMode == MerchantMode.Buy ? "" : "Remaining",
+                    currentMode == MerchantMode.Buy
+                        ? ""
+                        : (selectedItem.Quantity - inCart).ToString());
+
+                y += LineHeight;
+
+                float controlsX = detailsRect.x + 320f;
+                float controlsY = detailsRect.y + 105f;
 
                 int maxQuantity;
 
@@ -519,108 +516,94 @@ namespace BuyAnything.Source.UI
                     1,
                     maxQuantity);
 
+                // Quantity title
                 Widgets.Label(
                     new Rect(
-                        detailsRect.x + 15f,
-                        y,
-                        220f,
-                        25f),
-                    $"Qty: {purchaseQuantity} / {maxQuantity}");
+                        controlsX,
+                        controlsY,
+                        80f,
+                        22f),
+                    "Qty");
 
-                y += 25f;
+                controlsY += 22f;
 
-                // Slider
-                purchaseQuantity = Mathf.RoundToInt(
-                    Widgets.HorizontalSlider(
-                        new Rect(
-                            detailsRect.x + 15f,
-                            y,
-                            240f,
-                            24f),
-                        purchaseQuantity,
-                        1,
-                        maxQuantity));
-
-                Widgets.Label(
-                    new Rect(
-                        detailsRect.x + 15f,
-                        y + 22f,
-                        30f,
-                        20f),
-                    "1");
-
-                Text.Anchor = TextAnchor.UpperRight;
-
-                Widgets.Label(
-                    new Rect(
-                        detailsRect.x + 205f,
-                        y + 22f,
-                        50f,
-                        20f),
-                    maxQuantity.ToString());
-
-                Text.Anchor = TextAnchor.UpperLeft;
-
-                y += 45f;
-
-                // Buttons
+                // Minus button
                 if (Widgets.ButtonText(
-                    new Rect(detailsRect.x + 15f, y, 32f, 25f),
+                    new Rect(controlsX, controlsY, 24f, 24f),
                     "-"))
                 {
                     purchaseQuantity = Mathf.Max(1, purchaseQuantity - 1);
                 }
 
-                if (Widgets.ButtonText(
-                    new Rect(detailsRect.x + 52f, y, 42f, 25f),
-                    "-10"))
-                {
-                    purchaseQuantity = Mathf.Max(1, purchaseQuantity - 10);
-                }
+                // Quantity number
+                Widgets.Label(
+                    new Rect(
+                        controlsX + 30f,
+                        controlsY,
+                        35f,
+                        24f),
+                    purchaseQuantity.ToString());
 
+                // Plus button
                 if (Widgets.ButtonText(
-                    new Rect(detailsRect.x + 99f, y, 55f, 25f),
-                    "MAX"))
-                {
-                    purchaseQuantity = maxQuantity;
-                }
-
-                if (Widgets.ButtonText(
-                    new Rect(detailsRect.x + 159f, y, 42f, 25f),
-                    "+10"))
-                {
-                    purchaseQuantity = Mathf.Min(maxQuantity, purchaseQuantity + 10);
-                }
-
-                if (Widgets.ButtonText(
-                    new Rect(detailsRect.x + 206f, y, 32f, 25f),
+                    new Rect(controlsX + 70f, controlsY, 24f, 24f),
                     "+"))
                 {
                     purchaseQuantity = Mathf.Min(maxQuantity, purchaseQuantity + 1);
                 }
 
-                y += 30f;
+                controlsY += 32f;
+
+                // Slider
+                purchaseQuantity = Mathf.RoundToInt(
+                    Widgets.HorizontalSlider(
+                        new Rect(
+                            controlsX,
+                            controlsY,
+                            120f,
+                            22f),
+                        purchaseQuantity,
+                        1,
+                        maxQuantity));
+
+                controlsY += 24f;
+
+                // Max button
+                if (Widgets.ButtonText(
+                    new Rect(
+                        controlsX,
+                        controlsY,
+                        120f,
+                        24f),
+                    "MAX"))
+                {
+                    purchaseQuantity = maxQuantity;
+                }
 
                 bool favorite = FavoritesManager.IsFavorite(selectedItem.Thing);
 
+                // Footer buttons
+                float footerY = detailsRect.yMax - 45f;
+
                 if (Widgets.ButtonText(
                     new Rect(
-                        detailsRect.x + 15f,
-                        y,
-                        140f,
-                        35f),
+                        detailsRect.x + 20f,
+                        footerY,
+                        170f,
+                        30f),
                     favorite ? "★ Favorited" : "☆ Favorite"))
                 {
                     FavoritesManager.ToggleFavorite(selectedItem.Thing);
                 }
 
                 if (Widgets.ButtonText(
-                    new Rect(
-                        detailsRect.x + 165f,
-                        y,
-                        140f,
-                        35f),
-                    "Add to Cart"))
+    new Rect(
+        detailsRect.x + 205f,
+        footerY,
+        170f,
+        30f),
+    "Add to Cart"))
+                
                 {
                     if (currentMode == MerchantMode.Buy)
                     {
