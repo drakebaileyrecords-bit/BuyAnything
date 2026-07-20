@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+
+	<name>BuyAnything</name>
+
+	<author>Drake Bailey</author>
+
+	<packageId>drake.buyanything</packageId>
+
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<description>
+		A modern merchant terminal for RimWorld.
+
+		Buy and sell anything instantly with a searchable storefront,
+		shopping cart, favorites, and configurable mod settings.
+	</description>
+
+</ModMetaData>

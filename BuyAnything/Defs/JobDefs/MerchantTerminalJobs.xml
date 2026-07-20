@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<JobDef>
+		<defName>UseMerchantTerminal</defName>
+		<driverClass>BuyAnything.Source.Jobs.JobDriver_UseMerchantTerminal</driverClass>
+
+		<reportString>using merchant terminal.</reportString>
+
+		<casualInterruptible>false</casualInterruptible>
+		<playerInterruptible>true</playerInterruptible>
+		<checkOverrideOnExpire>false</checkOverrideOnExpire>
+		<alwaysShowWeapon>false</alwaysShowWeapon>
+		<collideWithPawns>true</collideWithPawns>
+		<joyKind>Research</joyKind>
+	</JobDef>
+
+</Defs>

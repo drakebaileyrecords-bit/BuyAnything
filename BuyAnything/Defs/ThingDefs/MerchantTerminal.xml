@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<ThingDef ParentName="BenchBase">
+
+		<defName>MerchantTerminal</defName>
+
+		<label>merchant terminal</label>
+
+		<description>A modern trade terminal that allows colonists to instantly buy and sell goods.</description>
+
+		<thingClass>BuyAnything.Source.Buildings.Building_MerchantTerminal</thingClass>
+
+		<graphicData>
+			<texPath>Things/Building/MerchantTerminal</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+
+		<size>(2,1)</size>
+
+		<altitudeLayer>Building</altitudeLayer>
+
+		<fillPercent>1.0</fillPercent>
+
+		<useHitPoints>true</useHitPoints>
+
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+
+		<costList>
+			<Steel>100</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+
+		<designationCategory>Production</designationCategory>
+
+		<researchPrerequisites>
+			<li>MerchantTerminalResearch</li>
+		</researchPrerequisites>
+
+		<surfaceType>Item</surfaceType>
+
+		<hasInteractionCell>true</hasInteractionCell>
+
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+
+		<comps>
+
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+
+			<li Class="CompProperties_Usable">
+				<useJob>UseMerchantTerminal</useJob>
+				<useLabel>Use Merchant Terminal</useLabel>
+			</li>
+			<li Class="BuyAnything.Source.Buildings.CompProperties_OpenMerchant"/>
+
+		</comps>
+
+	</ThingDef>
+
+</Defs>
