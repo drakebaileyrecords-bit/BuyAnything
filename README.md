@@ -1,4 +1,4 @@
-uy Anything v02 — UI Overhaul Update
+Buy Anything v02 — UI Overhaul Update
 
 This update focuses on improving the shopping experience with a cleaner interface, smarter quantity controls, and numerous quality-of-life improvements while laying the foundation for much larger features planned for future releases.
 
