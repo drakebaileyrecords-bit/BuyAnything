@@ -1,97 +1,139 @@
-# Buy Anything
+uy Anything v0.X.X — UI Overhaul Update
 
-A feature-rich trading mod for **RimWorld 1.6** that lets your colonists purchase and sell nearly any item through a buildable **Merchant Terminal**—no more waiting for trade caravans or orbital traders.
+This update focuses on improving the shopping experience with a cleaner interface, smarter quantity controls, and numerous quality-of-life improvements while laying the foundation for much larger features planned for future releases.
 
----
+✨ New
+Redesigned Item Details Panel
 
-## Overview
+The item details panel has been completely reorganized to make important information easier to read.
 
-Buy Anything was created to eliminate the downtime of waiting for traders while still keeping trading interactive and configurable. Instead of instantly spawning a menu anywhere, colonists must walk to a Merchant Terminal and use it to access a futuristic trading network.
+It now displays:
 
-Whether you're playing a balanced survival colony or a sandbox megabase, the economy can be customized to match your preferred playstyle.
+Market Value
+Buy/Sell Price
+Buy or Sell Multiplier
+Trade Tax
+Item Category
+Stack Limit (Buy Mode)
+Owned Quantity (Sell Mode)
+Quantity Already in Cart
+Remaining Sellable Quantity
+New Quantity Controls
 
----
+The quantity selector has been redesigned for a much cleaner workflow.
 
-## Features
+Features include:
 
-### 🛒 Merchant Terminal
-- Buildable Merchant Terminal
-- Colonists physically walk to and use the terminal
-- Optional research unlock
-- Optional power requirement
+➖ Decrease Quantity
+➕ Increase Quantity
+Quantity Slider
+MAX button
 
-### 📦 Buy Nearly Anything
-- Browse almost every item in RimWorld
-- Fast item search
-- Favorite frequently purchased items
-- Favorites-only filter
+This replaces the previous crowded button layout and makes purchasing large stacks much faster.
 
-### 💰 Sell Items
-- Sell unwanted items directly from your colony
-- Configurable sell price multiplier
+Improved Layout
 
-### ⚙️ Fully Configurable
+The right-side information panel has been redesigned into separate sections:
 
-Adjust the economy through Mod Settings.
+Item Information
+Quantity Controls
+Action Buttons
 
-Current options include:
+This creates a much cleaner workflow and prevents controls from overlapping other UI elements.
 
-- Enable/disable the mod
-- Buy price multiplier
-- Sell price multiplier
-- Trade tax
-- Purchase limit
-- Allow negative silver
-- Instant delivery
-- Cargo pod delivery
-- Require research
-- Require power
-- Pause game while trading
+Footer Action Bar
 
----
+Favorite and Add to Cart buttons now remain anchored to the bottom of the information panel instead of moving around as more information is displayed.
 
-## Why?
+This makes the interface feel much more consistent.
 
-Trade caravans are an important part of RimWorld, but they can also slow gameplay when you only need a few components, medicine, or advanced materials.
+Dynamic Sell Information
 
-Buy Anything lets you spend more time building your colony and less time waiting for the right trader to appear.
+When selling items, the inspector now shows:
 
----
+Owned
+In Cart
+Remaining
 
-## Compatibility
+Remaining inventory updates live while items are added or removed from the cart.
 
-- RimWorld 1.6
-- Safe to add to existing saves
-- Uses RimWorld's existing item database for broad compatibility with many content mods
+Centralized Pricing
 
----
+All prices displayed throughout the mod now use the same pricing calculations.
 
-## Roadmap
+This ensures:
 
-Planned features include:
+Item list prices
+Inspector prices
+Shopping cart totals
+Purchase calculations
+Selling calculations
 
-- Better item categories
-- Improved search filters
-- Item rarity filtering
-- Additional delivery methods
-- More economy balancing options
-- UI improvements
-- Multiplayer compatibility (if feasible)
+all remain perfectly synchronized.
 
----
+🛠 Improvements
+Improved spacing throughout the UI
+Cleaner item inspector
+Better alignment of controls
+More responsive quantity controls
+Better separation between information and actions
+Cleaner overall presentation
+Improved code organization for future UI expansion
+🐞 Bug Fixes
+Fixed duplicate Add to Cart execution caused by an unintended code block.
+Fixed selling cart allowing quantities to exceed owned inventory.
+Fixed displayed prices not matching final transaction prices.
+Fixed inspector values updating inconsistently.
+Improved quantity clamping for buying and selling.
+🚧 Coming Soon
 
-## Feedback
+Development is now shifting toward larger gameplay features.
 
-Bug reports, feature requests, balancing suggestions, and pull requests are always welcome.
+🏗 Blueprint Purchasing
 
-If you encounter an issue, please open a GitHub Issue with:
-- RimWorld version
-- Mod list (if applicable)
-- Error log (Player.log or HugsLib log)
-- Steps to reproduce
+Automatically purchase the missing materials required to complete your colony's blueprints.
 
----
+Instead of manually searching for every resource, Buy Anything will determine what's missing and build the shopping cart automatically.
 
-## License
+📦 Construction Supply Orders
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+Purchase complete resource packages for new construction projects with a single click.
+
+⭐ Favorites Expansion
+
+Favorites will become much more powerful with:
+
+Better organization
+Favorite categories
+Quick purchasing
+Faster filtering
+📜 Shopping Lists
+
+Save frequently purchased item lists for instant reordering.
+
+Perfect for:
+
+Colony restocks
+Emergency supplies
+Construction materials
+Food shipments
+📈 Dynamic Economy (Planned)
+
+A future economy system is planned that will allow item prices to fluctuate based on:
+
+Supply
+Demand
+Scarcity
+Colony progression
+🎨 Custom User Interface
+
+The current UI is only the beginning.
+
+Future updates will introduce a fully custom-designed interface with:
+
+Custom buttons
+Custom panels
+Improved icons
+Better visual styling
+Higher quality artwork
+A more polished RimWorld aesthetic
