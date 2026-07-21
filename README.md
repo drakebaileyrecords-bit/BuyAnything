@@ -1,162 +1,93 @@
-# BuyAnything
-### A complete buy & sell station for RimWorld
+# BuyAnything v0.5.0 — Blueprint Purchasing Update
 
-BuyAnything adds a fully featured shopping system to RimWorld, allowing colonists to purchase resources, equipment, and building materials through an intuitive in-game merchant interface. The mod also includes an intelligent Blueprint Purchasing system that automatically analyzes your construction projects and generates a shopping list for every missing resource.
+This update introduces one of BuyAnything's biggest quality-of-life features yet: **Blueprint Purchasing**.
+
+Planning a large construction project no longer means manually counting resources or guessing how much material you still need. BuyAnything can now analyze your blueprints and generate a complete shopping list before you purchase anything.
 
 ---
 
-# Version 0.5.0
+## ✨ New: Blueprint Purchasing
 
-## Major Features
+Added a brand new **Buy Blueprints** button to the merchant interface.
 
-### 🛒 Blueprint Purchasing Report
-A complete redesign of the blueprint purchasing workflow.
+With a single click, BuyAnything will:
 
-Instead of instantly adding resources to the cart, BuyAnything now generates a detailed shopping report before purchase.
+- Scan every construction blueprint on your map.
+- Scan active construction frames.
+- Compare required materials against your colony's current inventory.
+- Calculate exactly what resources are still missing.
+- Generate a detailed shopping report before anything is added to your cart.
 
-The report includes:
+No more manual counting.
+No more overbuying.
+No more spreadsheets.
 
-- Complete material breakdown
-- Required quantity
-- Currently owned quantity
-- Missing quantity
+---
+
+## 📋 Blueprint Shopping Report
+
+The new shopping report provides a complete breakdown of every material required to finish your construction projects.
+
+For each resource you'll see:
+
+- Required amount
+- Amount currently owned
+- Amount still needed
 - Unit price
 - Estimated sales tax
-- Total cost per material
-- Grand total
-- Individual material purchasing
-- One-click **Add Everything** button
+- Total line cost
 
-Blueprints and construction frames are now scanned correctly before generating the report.
+The report also includes:
+
+- Construction summary
+- Material count
+- Total missing resources
+- Purchase subtotal
+- Estimated tax
+- Grand total
+
+From there you can either purchase individual materials or click **Add Everything** to send the entire shopping list directly to your cart.
 
 ---
 
-### 🏗 Improved Blueprint Detection
+## 🏗 Improved Construction Detection
 
-The blueprint scanner has been rewritten to properly detect:
+Blueprint Purchasing correctly detects:
 
 - Building blueprints
 - Construction frames
 - Stuff-based buildings
 - Material substitutions
-- Existing owned resources
+- Existing colony resources
 
-This greatly improves shopping accuracy for large construction projects.
-
----
-
-### 🧾 Shopping Report UI Redesign
-
-The Blueprint Report window has been completely rebuilt.
-
-New layout includes:
-
-- Construction Summary
-- Pricing Summary
-- Scrollable material list
-- Fixed footer
-- Improved spacing
-- Larger window
-- Cleaner RimWorld-style interface
+This allows the shopping report to accurately calculate only the resources you still need.
 
 ---
 
-### 💰 Pricing Improvements
+## 🛒 Merchant UI Improvements
 
-Added pricing breakdown including:
+The merchant interface has also received several quality-of-life improvements:
 
-- Subtotal
-- Estimated Sales Tax
-- Grand Total
-
-Large currency values now display with thousands separators for easier reading.
-
-Example:
-
-```
-$8,069.19
-```
-
-instead of
-
-```
-$8069.19
-```
-
----
-
-### 🛍 Shopping Cart Improvements
-
-Merchant cart layout has been cleaned up.
-
-Changes include:
-
-- Cleaner footer layout
-- Total moved to the right side of the cart
-- Purchase controls grouped together
-- Improved readability
-
----
-
-### 🎨 UI Polish
-
-Numerous interface improvements including:
-
-- Better spacing
-- Improved alignment
+- Redesigned Blueprint Shopping Report
+- Improved shopping cart layout
+- Cleaner purchase summary
+- Better spacing and alignment
 - Larger report window
-- Cleaner scrolling behavior
-- Better visual hierarchy
-- Highlighted missing materials
-- Improved pricing display
+- Improved price formatting with thousands separators
+- Shopping cart total moved into a cleaner footer layout
 
 ---
 
-## Internal Changes
+## 🐞 Fixes
 
-- Rebuilt BlueprintReportWindow
-- Refactored BlueprintPurchaseManager
-- Improved material aggregation
-- Cleaner UI rendering methods
-- Better separation between business logic and UI
-- Added reusable pricing helper methods
-
----
-
-## Fixed
-
-- Fixed blueprint report not opening
-- Fixed blueprint material detection
-- Fixed frame detection
-- Fixed stuff-based building support
-- Fixed duplicate material calculations
-- Fixed incorrect total calculations
-- Fixed report layout overlap
-- Fixed header rendering
-- Fixed footer alignment
-- Fixed shopping cart footer layout
+- Fixed blueprint material detection.
+- Fixed construction frame support.
+- Fixed incorrect missing material calculations.
+- Fixed duplicate material entries.
+- Fixed shopping report layout issues.
+- Fixed several UI alignment problems.
+- Improved overall Blueprint Purchasing workflow.
 
 ---
 
-## Performance
-
-Large blueprint projects now generate a single consolidated material report instead of repeatedly adding items directly into the shopping cart, providing a much smoother purchasing workflow.
-
----
-
-## Next Planned Features
-
-- Merchant information panel redesign
-- Better item pricing breakdown
-- Purchase history
-- Search improvements
-- Additional item categories
-- Improved trading statistics
-- Optional merchant discounts
-- Better tax configuration
-
----
-
-Thank you for using BuyAnything!
-
-Feedback, bug reports, and feature suggestions are always appreciated.
+Thank you to everyone testing BuyAnything and providing feedback. More trading improvements and merchant features are planned for future updates!
