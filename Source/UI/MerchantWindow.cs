@@ -208,37 +208,47 @@ namespace BuyAnything.Source.UI
             searchText = Widgets.TextField(
                 searchBoxRect,
                 searchText);
+            // Sort button
             if (Widgets.ButtonText(
-    new Rect(300f, 49f, 95f, 28f),
-    currentSort == SortMode.Alphabetical
-    ? "A-Z"
-    : currentSort == SortMode.PriceLowToHigh
-        ? "$ Low-High"
-        : "$ High-Low"))
+                new Rect(300f, 49f, 95f, 28f),
+                currentSort == SortMode.Alphabetical
+                    ? "A-Z"
+                    : currentSort == SortMode.PriceLowToHigh
+                        ? "$ Low-High"
+                        : "$ High-Low"))
             {
                 List<FloatMenuOption> options = new List<FloatMenuOption>();
 
                 options.Add(new FloatMenuOption(
-    "Alphabetical",
-    delegate
-    {
-        currentSort = SortMode.Alphabetical;
-    }));
+                    "Alphabetical",
+                    delegate
+                    {
+                        currentSort = SortMode.Alphabetical;
+                    }));
 
                 options.Add(new FloatMenuOption(
-    "Price: Low → High",
-    delegate
-    {
-        currentSort = SortMode.PriceLowToHigh;
-    }));
+                    "Price: Low → High",
+                    delegate
+                    {
+                        currentSort = SortMode.PriceLowToHigh;
+                    }));
 
                 options.Add(new FloatMenuOption(
-    "Price: High → Low",
-    delegate
-    {
-        currentSort = SortMode.PriceHighToLow;
-    }));
+                    "Price: High → Low",
+                    delegate
+                    {
+                        currentSort = SortMode.PriceHighToLow;
+                    }));
+
                 Find.WindowStack.Add(new FloatMenu(options));
+            }
+
+            // Buy Blueprints button
+            if (Widgets.ButtonText(
+                new Rect(405f, 49f, 165f, 28f),
+                "Buy Blueprints"))
+            {
+                BlueprintPurchaseManager.AddMissingMaterialsToCart();
             }
 
             List<MerchantItem> visibleItems = items;
@@ -727,21 +737,13 @@ namespace BuyAnything.Source.UI
 
             Widgets.EndScrollView();
 
-            Widgets.Label(
-                new Rect(
-                    cartRect.x + 10f,
-                    cartRect.y + cartRect.height - 55f,
-                    250f,
-                    25f),
-                "Total: $" + CartManager.GetTotalCost().ToString("F2"));
-
             if (Widgets.ButtonText(
-                new Rect(
-                    cartRect.x + 10f,
-                    cartRect.y + cartRect.height - 30f,
-                    120f,
-                    25f),
-                "Clear Cart"))
+    new Rect(
+        cartRect.x + 10f,
+        cartRect.y + cartRect.height - 30f,
+        120f,
+        25f),
+    "Clear Cart"))
             {
                 CartManager.Clear();
             }
@@ -768,6 +770,18 @@ namespace BuyAnything.Source.UI
                     SellManager.Sell();
                 }
             }
+
+            Text.Anchor = TextAnchor.MiddleRight;
+
+            Widgets.Label(
+                new Rect(
+                    cartRect.x + cartRect.width - 220f,
+                    cartRect.y + cartRect.height - 30f,
+                    210f,
+                    25f),
+                "Total: $" + CartManager.GetTotalCost().ToString("N2"));
+
+            Text.Anchor = TextAnchor.UpperLeft;
         }
         public override void PostClose()
         {
