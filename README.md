@@ -1,139 +1,162 @@
-Buy Anything v02 — UI Overhaul Update
+# BuyAnything
+### A complete buy & sell station for RimWorld
 
-This update focuses on improving the shopping experience with a cleaner interface, smarter quantity controls, and numerous quality-of-life improvements while laying the foundation for much larger features planned for future releases.
+BuyAnything adds a fully featured shopping system to RimWorld, allowing colonists to purchase resources, equipment, and building materials through an intuitive in-game merchant interface. The mod also includes an intelligent Blueprint Purchasing system that automatically analyzes your construction projects and generates a shopping list for every missing resource.
 
-✨ New
-Redesigned Item Details Panel
+---
 
-The item details panel has been completely reorganized to make important information easier to read.
+# Version 0.5.0
 
-It now displays:
+## Major Features
 
-Market Value
-Buy/Sell Price
-Buy or Sell Multiplier
-Trade Tax
-Item Category
-Stack Limit (Buy Mode)
-Owned Quantity (Sell Mode)
-Quantity Already in Cart
-Remaining Sellable Quantity
-New Quantity Controls
+### 🛒 Blueprint Purchasing Report
+A complete redesign of the blueprint purchasing workflow.
 
-The quantity selector has been redesigned for a much cleaner workflow.
+Instead of instantly adding resources to the cart, BuyAnything now generates a detailed shopping report before purchase.
 
-Features include:
+The report includes:
 
-➖ Decrease Quantity
-➕ Increase Quantity
-Quantity Slider
-MAX button
+- Complete material breakdown
+- Required quantity
+- Currently owned quantity
+- Missing quantity
+- Unit price
+- Estimated sales tax
+- Total cost per material
+- Grand total
+- Individual material purchasing
+- One-click **Add Everything** button
 
-This replaces the previous crowded button layout and makes purchasing large stacks much faster.
+Blueprints and construction frames are now scanned correctly before generating the report.
 
-Improved Layout
+---
 
-The right-side information panel has been redesigned into separate sections:
+### 🏗 Improved Blueprint Detection
 
-Item Information
-Quantity Controls
-Action Buttons
+The blueprint scanner has been rewritten to properly detect:
 
-This creates a much cleaner workflow and prevents controls from overlapping other UI elements.
+- Building blueprints
+- Construction frames
+- Stuff-based buildings
+- Material substitutions
+- Existing owned resources
 
-Footer Action Bar
+This greatly improves shopping accuracy for large construction projects.
 
-Favorite and Add to Cart buttons now remain anchored to the bottom of the information panel instead of moving around as more information is displayed.
+---
 
-This makes the interface feel much more consistent.
+### 🧾 Shopping Report UI Redesign
 
-Dynamic Sell Information
+The Blueprint Report window has been completely rebuilt.
 
-When selling items, the inspector now shows:
+New layout includes:
 
-Owned
-In Cart
-Remaining
+- Construction Summary
+- Pricing Summary
+- Scrollable material list
+- Fixed footer
+- Improved spacing
+- Larger window
+- Cleaner RimWorld-style interface
 
-Remaining inventory updates live while items are added or removed from the cart.
+---
 
-Centralized Pricing
+### 💰 Pricing Improvements
 
-All prices displayed throughout the mod now use the same pricing calculations.
+Added pricing breakdown including:
 
-This ensures:
+- Subtotal
+- Estimated Sales Tax
+- Grand Total
 
-Item list prices
-Inspector prices
-Shopping cart totals
-Purchase calculations
-Selling calculations
+Large currency values now display with thousands separators for easier reading.
 
-all remain perfectly synchronized.
+Example:
 
-🛠 Improvements
-Improved spacing throughout the UI
-Cleaner item inspector
-Better alignment of controls
-More responsive quantity controls
-Better separation between information and actions
-Cleaner overall presentation
-Improved code organization for future UI expansion
-🐞 Bug Fixes
-Fixed duplicate Add to Cart execution caused by an unintended code block.
-Fixed selling cart allowing quantities to exceed owned inventory.
-Fixed displayed prices not matching final transaction prices.
-Fixed inspector values updating inconsistently.
-Improved quantity clamping for buying and selling.
-🚧 Coming Soon
+```
+$8,069.19
+```
 
-Development is now shifting toward larger gameplay features.
+instead of
 
-🏗 Blueprint Purchasing
+```
+$8069.19
+```
 
-Automatically purchase the missing materials required to complete your colony's blueprints.
+---
 
-Instead of manually searching for every resource, Buy Anything will determine what's missing and build the shopping cart automatically.
+### 🛍 Shopping Cart Improvements
 
-📦 Construction Supply Orders
+Merchant cart layout has been cleaned up.
 
-Purchase complete resource packages for new construction projects with a single click.
+Changes include:
 
-⭐ Favorites Expansion
+- Cleaner footer layout
+- Total moved to the right side of the cart
+- Purchase controls grouped together
+- Improved readability
 
-Favorites will become much more powerful with:
+---
 
-Better organization
-Favorite categories
-Quick purchasing
-Faster filtering
-📜 Shopping Lists
+### 🎨 UI Polish
 
-Save frequently purchased item lists for instant reordering.
+Numerous interface improvements including:
 
-Perfect for:
+- Better spacing
+- Improved alignment
+- Larger report window
+- Cleaner scrolling behavior
+- Better visual hierarchy
+- Highlighted missing materials
+- Improved pricing display
 
-Colony restocks
-Emergency supplies
-Construction materials
-Food shipments
-📈 Dynamic Economy (Planned)
+---
 
-A future economy system is planned that will allow item prices to fluctuate based on:
+## Internal Changes
 
-Supply
-Demand
-Scarcity
-Colony progression
-🎨 Custom User Interface
+- Rebuilt BlueprintReportWindow
+- Refactored BlueprintPurchaseManager
+- Improved material aggregation
+- Cleaner UI rendering methods
+- Better separation between business logic and UI
+- Added reusable pricing helper methods
 
-The current UI is only the beginning.
+---
 
-Future updates will introduce a fully custom-designed interface with:
+## Fixed
 
-Custom buttons
-Custom panels
-Improved icons
-Better visual styling
-Higher quality artwork
-A more polished RimWorld aesthetic
+- Fixed blueprint report not opening
+- Fixed blueprint material detection
+- Fixed frame detection
+- Fixed stuff-based building support
+- Fixed duplicate material calculations
+- Fixed incorrect total calculations
+- Fixed report layout overlap
+- Fixed header rendering
+- Fixed footer alignment
+- Fixed shopping cart footer layout
+
+---
+
+## Performance
+
+Large blueprint projects now generate a single consolidated material report instead of repeatedly adding items directly into the shopping cart, providing a much smoother purchasing workflow.
+
+---
+
+## Next Planned Features
+
+- Merchant information panel redesign
+- Better item pricing breakdown
+- Purchase history
+- Search improvements
+- Additional item categories
+- Improved trading statistics
+- Optional merchant discounts
+- Better tax configuration
+
+---
+
+Thank you for using BuyAnything!
+
+Feedback, bug reports, and feature suggestions are always appreciated.
