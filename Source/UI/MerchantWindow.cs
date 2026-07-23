@@ -1,11 +1,13 @@
-﻿using System;
+﻿using BuyAnything.Source.Data;
+using BuyAnything.Source.Settings;
+using BuyAnything.Source.Trading;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
-using BuyAnything.Source.Data;
-using BuyAnything.Source.Trading;
-using BuyAnything.Source.Settings;
+using WorkbenchMerchant2.Source.Trading;
+using WorkbenchMerchant2.Source.UI;
 
 namespace BuyAnything.Source.UI
 {
@@ -249,6 +251,15 @@ namespace BuyAnything.Source.UI
                 "Buy Blueprints"))
             {
                 BlueprintPurchaseManager.AddMissingMaterialsToCart();
+            }
+
+            if (Widgets.ButtonText(
+    new Rect(575f, 49f, 140f, 28f),
+    "Colony Services"))
+            {
+                Find.WindowStack.TryRemove(this);
+                Find.WindowStack.Add(new ColonyServicesWindow());
+                return;
             }
 
             List<MerchantItem> visibleItems = items;

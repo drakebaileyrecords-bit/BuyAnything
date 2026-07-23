@@ -120,7 +120,7 @@ namespace BuyAnything.Source.Trading
             if (map == null)
                 return;
 
-            IntVec3 dropSpot = DropCellFinder.TradeDropSpot(map);
+            IntVec3 dropSpot = FindSafeDropSpot(map);
 
             foreach (CartItem item in CartManager.Items)
             {
@@ -193,13 +193,13 @@ namespace BuyAnything.Source.Trading
                     thingsToDrop.Add(thing);
                     thing.stackCount = stackSize;
 
-                    
+
 
                     remaining -= stackSize;
                 }
             }
 
-            IntVec3 dropCenter = DropCellFinder.TradeDropSpot(map);
+            IntVec3 dropCenter = FindSafeDropSpot(map);
 
             DropPodUtility.DropThingsNear(
                 dropCenter,
@@ -212,6 +212,38 @@ namespace BuyAnything.Source.Trading
                 forbid: false,
                 allowFogged: false,
                 faction: Faction.OfPlayer);
+        }
+    private static IntVec3 FindSafeDropSpot(Map map)
+        {
+            IntVec3 center = DropCellFinder.TradeDropSpot(map);
+
+            if (IsSafeDropCell(center, map))
+                return center;
+
+            foreach (IntVec3 cell in GenRadial.RadialCellsAround(center, 30f, true))
+            {
+                if (!cell.InBounds(map))
+                    continue;
+
+                if (IsSafeDropCell(cell, map))
+                    return cell;
+            }
+
+            return center;
+        }
+
+        private static bool IsSafeDropCell(IntVec3 cell, Map map)
+        {
+            if (!cell.Standable(map))
+                return false;
+
+            if (cell.Roofed(map))
+                return false;
+
+            if (cell.GetEdifice(map) != null)
+                return false;
+
+            return true;
         }
     }
 }

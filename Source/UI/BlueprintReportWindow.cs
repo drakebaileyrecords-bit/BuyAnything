@@ -492,4 +492,4 @@ namespace BuyAnything.Source.UI
             Text.Anchor = TextAnchor.UpperLeft;
         }
     }
-}
+} 
